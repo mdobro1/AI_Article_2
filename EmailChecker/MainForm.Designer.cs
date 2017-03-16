@@ -30,17 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabelEmail = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBox_Accounts = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabelQueryEmails = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButtonReadEmail = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonValidate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabelDetectLanguage = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonDetectLanguage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabelModerateContent = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonModerateContent = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBoxEmails = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBoxBody = new System.Windows.Forms.GroupBox();
+            this.webBody = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.labelSubject = new System.Windows.Forms.Label();
-            this.webBody = new System.Windows.Forms.WebBrowser();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -55,18 +64,45 @@
             // 
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabelEmail,
             this.toolStripComboBox_Accounts,
+            this.toolStripSeparator1,
+            this.toolStripLabelQueryEmails,
             this.toolStripButtonReadEmail,
-            this.toolStripButtonValidate});
+            this.toolStripSeparator2,
+            this.toolStripLabelDetectLanguage,
+            this.toolStripButtonDetectLanguage,
+            this.toolStripSeparator3,
+            this.toolStripLabelModerateContent,
+            this.toolStripButtonModerateContent,
+            this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(870, 25);
             this.toolStrip1.TabIndex = 0;
             // 
+            // toolStripLabelEmail
+            // 
+            this.toolStripLabelEmail.Name = "toolStripLabelEmail";
+            this.toolStripLabelEmail.Size = new System.Drawing.Size(42, 22);
+            this.toolStripLabelEmail.Text = "Email: ";
+            // 
             // toolStripComboBox_Accounts
             // 
             this.toolStripComboBox_Accounts.Name = "toolStripComboBox_Accounts";
             this.toolStripComboBox_Accounts.Size = new System.Drawing.Size(300, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabelQueryEmails
+            // 
+            this.toolStripLabelQueryEmails.Name = "toolStripLabelQueryEmails";
+            this.toolStripLabelQueryEmails.Size = new System.Drawing.Size(85, 22);
+            this.toolStripLabelQueryEmails.Text = "Mails abfragen";
+            this.toolStripLabelQueryEmails.Click += new System.EventHandler(this.toolStripLabelQueryEmails_Click);
             // 
             // toolStripButtonReadEmail
             // 
@@ -78,16 +114,55 @@
             this.toolStripButtonReadEmail.ToolTipText = "Emails abfragen";
             this.toolStripButtonReadEmail.Click += new System.EventHandler(this.toolStripButtonReadEmail_Click);
             // 
-            // toolStripButtonValidate
+            // toolStripSeparator2
             // 
-            this.toolStripButtonValidate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonValidate.Image = global::EmailChecker.Properties.Resources.OK_Thumb;
-            this.toolStripButtonValidate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonValidate.Name = "toolStripButtonValidate";
-            this.toolStripButtonValidate.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonValidate.Text = "toolStripButton1";
-            this.toolStripButtonValidate.ToolTipText = "Emails prüfen";
-            this.toolStripButtonValidate.Click += new System.EventHandler(this.toolStripButtonValidate_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabelDetectLanguage
+            // 
+            this.toolStripLabelDetectLanguage.Name = "toolStripLabelDetectLanguage";
+            this.toolStripLabelDetectLanguage.Size = new System.Drawing.Size(101, 22);
+            this.toolStripLabelDetectLanguage.Text = "Sprache erkennen";
+            this.toolStripLabelDetectLanguage.Click += new System.EventHandler(this.toolStripLabelDetectLanguage_Click);
+            // 
+            // toolStripButtonDetectLanguage
+            // 
+            this.toolStripButtonDetectLanguage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDetectLanguage.Image = global::EmailChecker.Properties.Resources.Translate;
+            this.toolStripButtonDetectLanguage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDetectLanguage.Name = "toolStripButtonDetectLanguage";
+            this.toolStripButtonDetectLanguage.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonDetectLanguage.Text = "toolStripButton1";
+            this.toolStripButtonDetectLanguage.Click += new System.EventHandler(this.toolStripButtonDetectLanguage_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabelModerateContent
+            // 
+            this.toolStripLabelModerateContent.Name = "toolStripLabelModerateContent";
+            this.toolStripLabelModerateContent.Size = new System.Drawing.Size(81, 22);
+            this.toolStripLabelModerateContent.Text = "Inhalte Prüfen";
+            this.toolStripLabelModerateContent.Click += new System.EventHandler(this.toolStripLabelModerateContent_Click);
+            // 
+            // toolStripButtonModerateContent
+            // 
+            this.toolStripButtonModerateContent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonModerateContent.Image = global::EmailChecker.Properties.Resources.OK_Thumb;
+            this.toolStripButtonModerateContent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonModerateContent.Name = "toolStripButtonModerateContent";
+            this.toolStripButtonModerateContent.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonModerateContent.Text = "toolStripButton1";
+            this.toolStripButtonModerateContent.ToolTipText = "Emails prüfen";
+            this.toolStripButtonModerateContent.Click += new System.EventHandler(this.toolStripButtonModerateContent_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // splitContainer1
             // 
@@ -139,6 +214,15 @@
             this.groupBoxBody.TabStop = false;
             this.groupBoxBody.Text = "Email Inhalt";
             // 
+            // webBody
+            // 
+            this.webBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBody.Location = new System.Drawing.Point(3, 16);
+            this.webBody.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBody.Name = "webBody";
+            this.webBody.Size = new System.Drawing.Size(570, 384);
+            this.webBody.TabIndex = 0;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -166,15 +250,6 @@
             this.labelSubject.Size = new System.Drawing.Size(38, 13);
             this.labelSubject.TabIndex = 0;
             this.labelSubject.Text = "Betreff";
-            // 
-            // webBody
-            // 
-            this.webBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBody.Location = new System.Drawing.Point(3, 16);
-            this.webBody.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBody.Name = "webBody";
-            this.webBody.Size = new System.Drawing.Size(570, 384);
-            this.webBody.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -216,8 +291,17 @@
         private System.Windows.Forms.Label labelSubject;
         private System.Windows.Forms.ToolStripButton toolStripButtonReadEmail;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox_Accounts;
-        private System.Windows.Forms.ToolStripButton toolStripButtonValidate;
+        private System.Windows.Forms.ToolStripButton toolStripButtonModerateContent;
         private System.Windows.Forms.WebBrowser webBody;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelEmail;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelQueryEmails;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelDetectLanguage;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDetectLanguage;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelModerateContent;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
 

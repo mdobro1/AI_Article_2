@@ -46,5 +46,42 @@ namespace EmailChecker.Properties {
                 this["inboxName_EN"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6f81a959248444388738f0ef0e4b5b35")]
+        public string ContentModerator_SubscriptionKey {
+            get {
+                return ((string)(this["ContentModerator_SubscriptionKey"]));
+            }
+            set {
+                this["ContentModerator_SubscriptionKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ocp-Apim-Subscription-Key")]
+        public string OcpApimSubscriptionKey {
+            get {
+                return ((string)(this["OcpApimSubscriptionKey"]));
+            }
+            set {
+                this["OcpApimSubscriptionKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/Process" +
+            "Text/DetectLanguage?")]
+        public string CognitiveServicesUri_ContentModerator_DetectLanguage {
+            get {
+                return ((string)(this["CognitiveServicesUri_ContentModerator_DetectLanguage"]));
+            }
+            set {
+                this["CognitiveServicesUri_ContentModerator_DetectLanguage"] = value;
+            }
+        }
     }
 }
