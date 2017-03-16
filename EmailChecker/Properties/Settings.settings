@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EmailChecker.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="inboxName_DE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Posteingang</Value>
+    </Setting>
+    <Setting Name="inboxName_EN" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Inbox</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

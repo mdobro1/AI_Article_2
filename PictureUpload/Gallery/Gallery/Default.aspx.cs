@@ -15,33 +15,13 @@ namespace Gallery
         {
             if (!IsPostBack)
             {
+                NotAllowedPlaceHolder.Visible = false;
+                NoPicturePlaceHolder.Visible = false;
+                SuccessMessagePlaceHolder.Visible = false;
 
-                string image = Request.QueryString["img"];
-
-                object imageTag = Session[image];
-
-                var imageOK = true;
-                if (imageTag != null)
-                    imageOK = (bool)imageTag;
-
-                bigImgDisplay.Visible = true;
-
-                if (!imageOK)
-                {
-                    if (image != null)
-                        ShowNotApproved();
-                    else
-                        ShowEmptyState();
-                }
-                else
-                {
-                    if (image != null)
-                        bigImg.ImageUrl = "~/Pictures/" + image;
-                    else
-                        ShowEmptyState();
-
-                }
+                showImage(Request.QueryString["img"]);
             }
+
             if (Session["Uploadsuccses"] != null)
             {
                 SuccessMessagePlaceHolder.Visible = true;
@@ -52,18 +32,32 @@ namespace Gallery
             PicList.DataBind();
         }
 
-        private void ShowNotApproved()
+        private void showImage(string image)
         {
-            bigImg.ImageUrl = "~/Gfx/stop.jpg";
-            NotAllowedPlaceHolder.Visible = true;
-            NoPicturePlaceHolder.Visible = false;
-        }
+            object imageTag = Session[image];
 
-        private void ShowEmptyState()
-        {
-            bigImg.ImageUrl = "~/Gfx/empty.jpg";
-            NotAllowedPlaceHolder.Visible = false;
-            NoPicturePlaceHolder.Visible = true;
+            if (imageTag == null)
+                imageTag = true;
+
+            var imageOK = (bool)imageTag;
+
+            if (!imageOK)
+            {
+                bigImg.ImageUrl = "~/Gfx/stop.jpg";
+                NotAllowedPlaceHolder.Visible = true;
+            }
+            else
+            {
+                if (image != null)
+                    bigImg.ImageUrl = "~/Pictures/" + image;
+                else
+                {
+                    bigImg.ImageUrl = "~/Gfx/empty.jpg";
+                    NoPicturePlaceHolder.Visible = true;
+                }
+            }
+
+            bigImgDisplay.Visible = true;
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)
