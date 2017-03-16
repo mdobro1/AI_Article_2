@@ -83,5 +83,18 @@ namespace EmailChecker.Properties {
                 this["CognitiveServicesUri_ContentModerator_DetectLanguage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/Process" +
+            "Text/Screen/?")]
+        public string CognitiveServicesUri_ContentModerator_Moderate {
+            get {
+                return ((string)(this["CognitiveServicesUri_ContentModerator_Moderate"]));
+            }
+            set {
+                this["CognitiveServicesUri_ContentModerator_Moderate"] = value;
+            }
+        }
     }
 }

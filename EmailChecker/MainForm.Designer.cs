@@ -43,31 +43,38 @@
             this.toolStripButtonModerateContent = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listBoxEmails = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCheckResult = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBoxBody = new System.Windows.Forms.GroupBox();
             this.webBody = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.labelSubject = new System.Windows.Forms.Label();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.txtCheckResult = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.mainStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBoxBody.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBoxBody.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -88,14 +95,14 @@
             this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(870, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1204, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripLabelEmail
             // 
             this.toolStripLabelEmail.Name = "toolStripLabelEmail";
-            this.toolStripLabelEmail.Size = new System.Drawing.Size(42, 22);
-            this.toolStripLabelEmail.Text = "Email: ";
+            this.toolStripLabelEmail.Size = new System.Drawing.Size(85, 22);
+            this.toolStripLabelEmail.Text = "Email-Konto:   ";
             // 
             // toolStripComboBox_Accounts
             // 
@@ -178,7 +185,7 @@
             // 
             this.splitContainer1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -189,77 +196,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(870, 455);
-            this.splitContainer1.SplitterDistance = 290;
+            this.splitContainer1.Size = new System.Drawing.Size(1204, 669);
+            this.splitContainer1.SplitterDistance = 500;
             this.splitContainer1.TabIndex = 1;
-            // 
-            // listBoxEmails
-            // 
-            this.listBoxEmails.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.listBoxEmails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxEmails.FormattingEnabled = true;
-            this.listBoxEmails.Location = new System.Drawing.Point(3, 16);
-            this.listBoxEmails.Name = "listBoxEmails";
-            this.listBoxEmails.Size = new System.Drawing.Size(284, 236);
-            this.listBoxEmails.TabIndex = 0;
-            this.listBoxEmails.SelectedIndexChanged += new System.EventHandler(this.listBoxEmails_SelectedIndexChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupBoxBody);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 52);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(576, 403);
-            this.panel2.TabIndex = 1;
-            // 
-            // groupBoxBody
-            // 
-            this.groupBoxBody.Controls.Add(this.webBody);
-            this.groupBoxBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxBody.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxBody.Name = "groupBoxBody";
-            this.groupBoxBody.Size = new System.Drawing.Size(576, 403);
-            this.groupBoxBody.TabIndex = 0;
-            this.groupBoxBody.TabStop = false;
-            this.groupBoxBody.Text = "Email Inhalt";
-            // 
-            // webBody
-            // 
-            this.webBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBody.Location = new System.Drawing.Point(3, 16);
-            this.webBody.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBody.Name = "webBody";
-            this.webBody.Size = new System.Drawing.Size(570, 384);
-            this.webBody.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Controls.Add(this.txtSubject);
-            this.panel1.Controls.Add(this.labelSubject);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(576, 52);
-            this.panel1.TabIndex = 0;
-            // 
-            // txtSubject
-            // 
-            this.txtSubject.Location = new System.Drawing.Point(57, 16);
-            this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(506, 20);
-            this.txtSubject.TabIndex = 1;
-            // 
-            // labelSubject
-            // 
-            this.labelSubject.AutoSize = true;
-            this.labelSubject.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelSubject.Location = new System.Drawing.Point(13, 19);
-            this.labelSubject.Name = "labelSubject";
-            this.labelSubject.Size = new System.Drawing.Size(38, 13);
-            this.labelSubject.TabIndex = 0;
-            this.labelSubject.Text = "Betreff";
             // 
             // splitContainer2
             // 
@@ -275,29 +214,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(290, 455);
-            this.splitContainer2.SplitterDistance = 255;
+            this.splitContainer2.Size = new System.Drawing.Size(500, 669);
+            this.splitContainer2.SplitterDistance = 374;
             this.splitContainer2.TabIndex = 1;
-            // 
-            // txtCheckResult
-            // 
-            this.txtCheckResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCheckResult.Location = new System.Drawing.Point(3, 16);
-            this.txtCheckResult.Multiline = true;
-            this.txtCheckResult.Name = "txtCheckResult";
-            this.txtCheckResult.Size = new System.Drawing.Size(284, 177);
-            this.txtCheckResult.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtCheckResult);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(290, 196);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = " Prüfergebnis ";
             // 
             // groupBox2
             // 
@@ -305,18 +224,147 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 255);
+            this.groupBox2.Size = new System.Drawing.Size(500, 374);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " Emails-Liste ";
+            // 
+            // listBoxEmails
+            // 
+            this.listBoxEmails.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.listBoxEmails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxEmails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxEmails.ForeColor = System.Drawing.Color.Blue;
+            this.listBoxEmails.FormattingEnabled = true;
+            this.listBoxEmails.Location = new System.Drawing.Point(3, 16);
+            this.listBoxEmails.Name = "listBoxEmails";
+            this.listBoxEmails.Size = new System.Drawing.Size(494, 355);
+            this.listBoxEmails.TabIndex = 0;
+            this.listBoxEmails.SelectedIndexChanged += new System.EventHandler(this.listBoxEmails_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtCheckResult);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(500, 291);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = " Prüfergebnis ";
+            // 
+            // txtCheckResult
+            // 
+            this.txtCheckResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCheckResult.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCheckResult.ForeColor = System.Drawing.Color.Red;
+            this.txtCheckResult.Location = new System.Drawing.Point(3, 16);
+            this.txtCheckResult.Multiline = true;
+            this.txtCheckResult.Name = "txtCheckResult";
+            this.txtCheckResult.Size = new System.Drawing.Size(494, 272);
+            this.txtCheckResult.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupBoxBody);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 52);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(700, 617);
+            this.panel2.TabIndex = 1;
+            // 
+            // groupBoxBody
+            // 
+            this.groupBoxBody.Controls.Add(this.webBody);
+            this.groupBoxBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxBody.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxBody.Name = "groupBoxBody";
+            this.groupBoxBody.Size = new System.Drawing.Size(700, 617);
+            this.groupBoxBody.TabIndex = 0;
+            this.groupBoxBody.TabStop = false;
+            this.groupBoxBody.Text = "Email Inhalt";
+            // 
+            // webBody
+            // 
+            this.webBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBody.Location = new System.Drawing.Point(3, 16);
+            this.webBody.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBody.Name = "webBody";
+            this.webBody.Size = new System.Drawing.Size(694, 598);
+            this.webBody.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.txtSubject);
+            this.panel1.Controls.Add(this.labelSubject);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(700, 52);
+            this.panel1.TabIndex = 0;
+            // 
+            // txtSubject
+            // 
+            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubject.Location = new System.Drawing.Point(57, 16);
+            this.txtSubject.Name = "txtSubject";
+            this.txtSubject.Size = new System.Drawing.Size(631, 20);
+            this.txtSubject.TabIndex = 1;
+            // 
+            // labelSubject
+            // 
+            this.labelSubject.AutoSize = true;
+            this.labelSubject.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelSubject.Location = new System.Drawing.Point(13, 19);
+            this.labelSubject.Name = "labelSubject";
+            this.labelSubject.Size = new System.Drawing.Size(38, 13);
+            this.labelSubject.TabIndex = 0;
+            this.labelSubject.Text = "Betreff";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.statusStrip1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 694);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1204, 25);
+            this.panel3.TabIndex = 2;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 3);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1204, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.splitContainer1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 25);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1204, 669);
+            this.panel4.TabIndex = 3;
+            // 
+            // mainStatus
+            // 
+            this.mainStatus.Name = "mainStatus";
+            this.mainStatus.Size = new System.Drawing.Size(23, 17);
+            this.mainStatus.Text = "OK";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(870, 480);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(1204, 719);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -329,17 +377,22 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.groupBoxBody.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.groupBoxBody.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,6 +425,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtCheckResult;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel mainStatus;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 

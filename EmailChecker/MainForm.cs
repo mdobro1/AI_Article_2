@@ -18,6 +18,8 @@ namespace EmailChecker
         {
             InitializeComponent();
 
+            webBody.ScriptErrorsSuppressed = true;
+
             outlookApp = new Microsoft.Office.Interop.Outlook.Application();
             outlookNamespace = outlookApp.GetNamespace("MAPI");
             accounts = outlookApp.Session.Accounts;
@@ -114,8 +116,8 @@ namespace EmailChecker
             if (accountsExist())
             {
                 listBoxEmails.Items.Clear();
-
-                readInboxAsync(
+  
+               readInboxAsync(
                 //  readInbox(
                     toolStripComboBox_Accounts.Text,
                     Properties.Settings.Default.inboxName_DE,
@@ -153,6 +155,7 @@ namespace EmailChecker
             Account = account;
             Inbox1 = inbox1;
             Inbox2 = inbox2;
+
             await Task.Run(() => readInbox());
         }
 
@@ -162,20 +165,25 @@ namespace EmailChecker
         }
         #endregion
 
-
         #region detect language
         private void actionDetectLanguage()
         {
+            txtCheckResult.Text = "";
+            mainStatus.Text = "Spracherkennung-Abfrage von Email \"{0}\"".Include(txtSubject.Text);
             QueryLanguageAsync();
-        }
+        }      
 
         private async void QueryLanguageAsync()
         {
-            var response = await QueryLanguageAsync(txtSubject.Text, "text/plain");
+            var subject = txtSubject.Text;
+            var response = await QueryLanguageAsync(subject, "text/plain");
+
+            mainStatus.Text = "Spracherkennung fertig.";
 
             if (response != null)
             {
                 txtCheckResult.Text = await response.Content.ReadAsStringAsync();
+                mainStatus.Text = "OK (Spracherkennung der Email \"{0}\")".Include(subject);
             }
             else
             {
@@ -195,7 +203,6 @@ namespace EmailChecker
 
             // Request headers
             client.DefaultRequestHeaders.Add(
-                //"Ocp-Apim-Subscription-Key", "6f81a959248444388738f0ef0e4b5b35"
                 Properties.Settings.Default.OcpApimSubscriptionKey, 
                 Properties.Settings.Default.ContentModerator_SubscriptionKey
                 );
@@ -207,6 +214,65 @@ namespace EmailChecker
             {
                content.Headers.ContentType = new MediaTypeHeaderValue(dataType);
                return await client.PostAsync(uri, content);
+            }
+        }
+        #endregion
+
+        #region moderate content
+        private void actionModerateContent()
+        {
+            txtCheckResult.Text = "";
+            mainStatus.Text = "Inhalt-Moderation von Email \"{0}\"".Include(txtSubject.Text);
+            ModerateContentAsync();
+        }
+
+        private async void ModerateContentAsync()
+        {
+            var subject = webBody.DocumentText;
+            var response = await ModerateContentAsync(subject, "text/html");
+
+            mainStatus.Text = "Inhalt-Moderation der Email \"{0}\" ist fertig".Include(subject);
+
+            if (response != null)
+            {
+                txtCheckResult.Text = await response.Content.ReadAsStringAsync();
+                mainStatus.Text = "OK (Inhalt-Moderation  der Email \"{0}\")".Include(subject);
+            }
+            else
+            {
+                txtCheckResult.Text = "Leere Antwort";
+            }
+        }
+
+        private static async Task<HttpResponseMessage> ModerateContentAsync(string data, string dataType)
+        {
+            return await ModerateContentAsync(Encoding.Unicode.GetBytes(data), dataType);
+        }
+
+        private static async Task<HttpResponseMessage> ModerateContentAsync(byte[] byteData, string dataType)
+        {
+            var client = new HttpClient();
+            var queryString = HttpUtility.ParseQueryString(string.Empty);
+
+            // Request headers
+            client.DefaultRequestHeaders.Add(
+                Properties.Settings.Default.OcpApimSubscriptionKey,
+                Properties.Settings.Default.ContentModerator_SubscriptionKey
+                );
+
+            // Request parameters
+            queryString["language"] = "eng";
+            queryString["autocorrect"] = "true";
+            queryString["urls"] = "true";
+            queryString["PII"] = "true";
+
+            var uri = Properties.Settings.Default.CognitiveServicesUri_ContentModerator_Moderate + queryString;
+
+
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue(dataType);
+                return await client.PostAsync(uri, content);
             }
         }
         #endregion
@@ -229,11 +295,6 @@ namespace EmailChecker
         private void toolStripLabelModerateContent_Click(object sender, EventArgs e)
         {
             actionModerateContent();
-        }
-
-        private static void actionModerateContent()
-        {
-            ;
         }
 
         private void toolStripButtonModerateContent_Click(object sender, EventArgs e)

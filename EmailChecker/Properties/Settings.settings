@@ -17,5 +17,8 @@
     <Setting Name="CognitiveServicesUri_ContentModerator_DetectLanguage" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage?</Value>
     </Setting>
+    <Setting Name="CognitiveServicesUri_ContentModerator_Moderate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen/?</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
