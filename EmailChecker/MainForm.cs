@@ -175,8 +175,11 @@ namespace EmailChecker
 
             if (response != null)
             {
-                var content = await response.Content.ReadAsStringAsync();
-                MessageBox.Show(content);
+                txtCheckResult.Text = await response.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                txtCheckResult.Text = "Leere Antwort";
             }
         }
 

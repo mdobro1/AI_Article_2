@@ -50,6 +50,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.labelSubject = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.txtCheckResult = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -58,6 +62,12 @@
             this.panel2.SuspendLayout();
             this.groupBoxBody.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -173,7 +183,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.listBoxEmails);
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
             // 
             // splitContainer1.Panel2
             // 
@@ -188,9 +198,9 @@
             this.listBoxEmails.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listBoxEmails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxEmails.FormattingEnabled = true;
-            this.listBoxEmails.Location = new System.Drawing.Point(0, 0);
+            this.listBoxEmails.Location = new System.Drawing.Point(3, 16);
             this.listBoxEmails.Name = "listBoxEmails";
-            this.listBoxEmails.Size = new System.Drawing.Size(290, 455);
+            this.listBoxEmails.Size = new System.Drawing.Size(284, 236);
             this.listBoxEmails.TabIndex = 0;
             this.listBoxEmails.SelectedIndexChanged += new System.EventHandler(this.listBoxEmails_SelectedIndexChanged);
             // 
@@ -251,6 +261,55 @@
             this.labelSubject.TabIndex = 0;
             this.labelSubject.Text = "Betreff";
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer2.Size = new System.Drawing.Size(290, 455);
+            this.splitContainer2.SplitterDistance = 255;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // txtCheckResult
+            // 
+            this.txtCheckResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCheckResult.Location = new System.Drawing.Point(3, 16);
+            this.txtCheckResult.Multiline = true;
+            this.txtCheckResult.Name = "txtCheckResult";
+            this.txtCheckResult.Size = new System.Drawing.Size(284, 177);
+            this.txtCheckResult.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtCheckResult);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(290, 196);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = " Prüfergebnis ";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.listBoxEmails);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(290, 255);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = " Emails-Liste ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +333,13 @@
             this.groupBoxBody.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +368,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel toolStripLabelModerateContent;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtCheckResult;
     }
 }
 
