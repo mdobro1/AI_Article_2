@@ -35,7 +35,7 @@ namespace Gallery
             PicList.DataBind();
         }
 
-        private void showImage(string image)
+        private async void showImage(string image)
         {
 
             // TODO call EvaluateImage here
@@ -44,18 +44,16 @@ namespace Gallery
             //    string urlImage = "";
             //   var expectSizeException = false;
 
+            bigImg.ImageUrl = "~/Gfx/stop.jpg";
+            NotAllowedPlaceHolder.Visible = true;
 
-            object imageTag = Session[image];
+            bool imageOK = false;
 
-            if (imageTag == null)
-                imageTag = true;
-
-            var imageOK = (bool)imageTag;
+            var evaluationResult = await
 
             if (!imageOK)
             {
-                bigImg.ImageUrl = "~/Gfx/stop.jpg";
-                NotAllowedPlaceHolder.Visible = true;
+
             }
             else
             {
@@ -74,11 +72,10 @@ namespace Gallery
         private static async System.Threading.Tasks.Task<EvaluateImageResult> EvaluateImage(
             string type, string urlImage, byte[] rawImage, bool expectSizeException)
         {
-            var moderator =
-                new ModeratorClient("?");
-
-
+            // init
             EvaluateImageResult result = null;
+            var moderator = new ModeratorClient("?");
+            
 
 
             switch (type)
