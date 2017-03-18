@@ -346,6 +346,5 @@ namespace ContentModeratorSDK.Test
             Assert.IsTrue(!string.IsNullOrWhiteSpace(result.DetectedLanguage));
             Assert.IsTrue(result.DetectedLanguage.Equals(expectedLanguage,StringComparison.OrdinalIgnoreCase));
         }
-
     }
 }

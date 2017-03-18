@@ -10,13 +10,13 @@ namespace EmailChecker
     {
         public static string Include(this String str, params object[] values)
         {
-            if (!str.IsNullIfEmptyOrWhitespace())
+            if (!str.IsNullOrEmptyOrWhitespace())
                 return string.Format(str, values);
             else
                 return str;
         }
 
-        public static bool IsNullIfEmptyOrWhitespace(this String str)
+        public static bool IsNullOrEmptyOrWhitespace(this String str)
         {
             return String.IsNullOrEmpty(str) || String.IsNullOrWhiteSpace(str);
         }

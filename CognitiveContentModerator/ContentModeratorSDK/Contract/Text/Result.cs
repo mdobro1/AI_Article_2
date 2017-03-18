@@ -17,5 +17,10 @@ namespace Microsoft.CognitiveServices.ContentModerator.Contract.Text
         /// Tracking Id
         /// </summary>
         public string TrackingId { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("Status: {0}; Tracking-ID={1}", Status, TrackingId);
+        }
     }
 }

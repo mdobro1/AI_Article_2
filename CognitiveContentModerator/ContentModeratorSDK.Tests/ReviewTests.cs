@@ -34,28 +34,49 @@ namespace ContentModeratorSDK.Test
         [TestMethod]
         public void GetReviewDetails()
         {
-            var task = this.client.GetReview(this.reviewTeamName , "Review Id");
+            var lastReviewId = File.ReadAllText(Path.Combine(Path.GetTempPath(), "LastReviewCache.tmp"));
+            Assert.IsNotNull(lastReviewId);
+
+            var task = this.client.GetReview(this.reviewTeamName, lastReviewId);
             var result = task.Result;
             Assert.IsNotNull(result);
+            Assert.IsTrue(result.Status == "Complete");
         }
 
         [TestMethod]
         public void CreateReview()
+        {            
+            var result = CreateReviewJob(false, false);
+
+            if (result != null && result.Length > 0)
+            {
+                File.WriteAllText(Path.Combine(Path.GetTempPath(), "LastReviewCache.tmp"), result[0]);
+            }              
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Length > 0);
+        }
+
+        private string[] CreateReviewJob(bool adult, bool racy)
         {
             List<ReviewRequest> revrequests = new List<ReviewRequest>();
             List<KeyValue> mData = new List<KeyValue>();
-            KeyValue kv = new KeyValue()
-            {
-                Key = "a",
-                Value = "True"
-            };
-            mData.Add(kv);
-            kv = new KeyValue()
-            {
-                Key = "r",
-                Value = "False"
-            };
-            mData.Add(kv);
+
+      
+                KeyValue kv = new KeyValue()
+                {
+                    Key = "a",
+                    Value = adult.ToString()
+                };
+                mData.Add(kv);
+                kv = new KeyValue()
+                {
+                    Key = "r",
+                    Value = racy.ToString()
+                };
+                mData.Add(kv);
+            
+
             ReviewRequest req1 = new ReviewRequest()
             {
                 CallbackEndpoint = string.Empty,
@@ -67,8 +88,9 @@ namespace ContentModeratorSDK.Test
             revrequests.Add(req1);
             var task = this.client.CreateReview(this.reviewTeamName, revrequests);
             var result = task.Result;
-            Assert.IsNotNull(result);
+            return result;
         }
+
 
         [TestMethod]
         public void GetJobDetails()

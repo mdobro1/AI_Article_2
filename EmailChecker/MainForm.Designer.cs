@@ -56,8 +56,9 @@
             this.labelSubject = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.mainStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.toolStripTextBoxDetectedLanguage = new System.Windows.Forms.ToolStripTextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -89,6 +90,7 @@
             this.toolStripSeparator2,
             this.toolStripLabelDetectLanguage,
             this.toolStripButtonDetectLanguage,
+            this.toolStripTextBoxDetectedLanguage,
             this.toolStripSeparator3,
             this.toolStripLabelModerateContent,
             this.toolStripButtonModerateContent,
@@ -342,6 +344,12 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // mainStatus
+            // 
+            this.mainStatus.Name = "mainStatus";
+            this.mainStatus.Size = new System.Drawing.Size(23, 17);
+            this.mainStatus.Text = "OK";
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.splitContainer1);
@@ -351,11 +359,10 @@
             this.panel4.Size = new System.Drawing.Size(1204, 669);
             this.panel4.TabIndex = 3;
             // 
-            // mainStatus
+            // toolStripTextBoxDetectedLanguage
             // 
-            this.mainStatus.Name = "mainStatus";
-            this.mainStatus.Size = new System.Drawing.Size(23, 17);
-            this.mainStatus.Text = "OK";
+            this.toolStripTextBoxDetectedLanguage.Name = "toolStripTextBoxDetectedLanguage";
+            this.toolStripTextBoxDetectedLanguage.Size = new System.Drawing.Size(30, 25);
             // 
             // MainForm
             // 
@@ -429,6 +436,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel mainStatus;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxDetectedLanguage;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Web;
 using System.Text;
+using Microsoft.CognitiveServices.ContentModerator;
 
 namespace EmailChecker
 {
@@ -13,10 +14,13 @@ namespace EmailChecker
         Microsoft.Office.Interop.Outlook.Application outlookApp;
         Microsoft.Office.Interop.Outlook.NameSpace outlookNamespace;
         Microsoft.Office.Interop.Outlook.Accounts accounts;
+        private readonly ModeratorClient client = null;
 
         public MainForm()
         {
             InitializeComponent();
+
+            this.client = new ModeratorClient(Properties.Settings.Default.ContentModerator_SubscriptionKey);
 
             webBody.ScriptErrorsSuppressed = true;
 
@@ -166,12 +170,38 @@ namespace EmailChecker
         #endregion
 
         #region detect language
-        private void actionDetectLanguage()
+        private void actionDetectLanguage(bool useModeartorClient)
         {
             txtCheckResult.Text = "";
             mainStatus.Text = "Spracherkennung-Abfrage von Email \"{0}\"".Include(txtSubject.Text);
-            QueryLanguageAsync();
-        }      
+
+            if (useModeartorClient)
+                IdentifyLanguage();
+            else
+                QueryLanguageAsync();
+        }
+
+        private async void IdentifyLanguage()
+        {
+            var subject = txtSubject.Text;
+
+            if (subject.IsNullOrEmptyOrWhitespace()) return;
+
+            var result = await this.client.IdentifyLanguageAsync(subject, Constants.MediaType.Plain);
+            mainStatus.Text = "OK (Spracherkennung der Email \"{0}\")".Include(subject);
+
+            if (result != null)              
+            {
+                txtCheckResult.Text = "Sprache=\"{0}\"; Status: {1}; Tracking-ID={2}".Include(result.DetectedLanguage, result.Status.ToString(), result.TrackingId);
+
+                if (result.Status != null
+                 && result.Status.Code == "3000"
+                 && !result.DetectedLanguage.IsNullOrEmptyOrWhitespace())
+                {
+                    toolStripTextBoxDetectedLanguage.Text = result.DetectedLanguage;
+                }
+            }            
+        }
 
         private async void QueryLanguageAsync()
         {
@@ -228,51 +258,32 @@ namespace EmailChecker
 
         private async void ModerateContentAsync()
         {
-            var subject = webBody.DocumentText;
-            var response = await ModerateContentAsync(subject, "text/html");
+            // vaidate
+            if (webBody.DocumentText.IsNullOrEmptyOrWhitespace()) return;
+
+            // go!
+            var subject = txtSubject.Text;
+
+            var lang = toolStripTextBoxDetectedLanguage.Text;
+            if (lang.IsNullOrEmptyOrWhitespace())
+                lang = Properties.Settings.Default.DefaultLanguage;
+
+            var response = await this.client.ScreenTextAsync(webBody.DocumentText, Constants.MediaType.Html, lang,
+                Properties.Settings.Default.ContentModerator_AutoCorrect,
+                Properties.Settings.Default.ContentModerator_AnalyzeUrl,
+                Properties.Settings.Default.ContenetModerator_DetectPII,
+                "");
 
             mainStatus.Text = "Inhalt-Moderation der Email \"{0}\" ist fertig".Include(subject);
 
             if (response != null)
             {
-                txtCheckResult.Text = await response.Content.ReadAsStringAsync();
+                txtCheckResult.Text = response.ToString();
                 mainStatus.Text = "OK (Inhalt-Moderation  der Email \"{0}\")".Include(subject);
             }
             else
             {
                 txtCheckResult.Text = "Leere Antwort";
-            }
-        }
-
-        private static async Task<HttpResponseMessage> ModerateContentAsync(string data, string dataType)
-        {
-            return await ModerateContentAsync(Encoding.Unicode.GetBytes(data), dataType);
-        }
-
-        private static async Task<HttpResponseMessage> ModerateContentAsync(byte[] byteData, string dataType)
-        {
-            var client = new HttpClient();
-            var queryString = HttpUtility.ParseQueryString(string.Empty);
-
-            // Request headers
-            client.DefaultRequestHeaders.Add(
-                Properties.Settings.Default.OcpApimSubscriptionKey,
-                Properties.Settings.Default.ContentModerator_SubscriptionKey
-                );
-
-            // Request parameters
-            queryString["language"] = "eng";
-            queryString["autocorrect"] = "true";
-            queryString["urls"] = "true";
-            queryString["PII"] = "true";
-
-            var uri = Properties.Settings.Default.CognitiveServicesUri_ContentModerator_Moderate + queryString;
-
-
-            using (var content = new ByteArrayContent(byteData))
-            {
-                content.Headers.ContentType = new MediaTypeHeaderValue(dataType);
-                return await client.PostAsync(uri, content);
             }
         }
         #endregion
@@ -284,12 +295,12 @@ namespace EmailChecker
 
         private void toolStripButtonDetectLanguage_Click(object sender, EventArgs e)
         {
-            actionDetectLanguage();
+            actionDetectLanguage(Properties.Settings.Default.UserModeratorClient);
         }
 
         private void toolStripLabelDetectLanguage_Click(object sender, EventArgs e)
         {
-            actionDetectLanguage();
+            actionDetectLanguage(Properties.Settings.Default.UserModeratorClient);
         }
 
         private void toolStripLabelModerateContent_Click(object sender, EventArgs e)

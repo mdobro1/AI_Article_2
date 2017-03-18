@@ -21,5 +21,16 @@ namespace Microsoft.CognitiveServices.ContentModerator.Contract.Text
         public string ContentId;
         public bool IsMatch;
         public MatchDetails MatchDetails;
+
+        public override string ToString()
+        {
+            var result =  String.Format("{0}; OriginalText={1}; NormalizedText={2}; Misrepresentation={3}; Language={4}; ContentId={5}; IsMatch={6}", 
+                base.ToString(), OriginalText, NormalizedText, Misrepresentation, Language, ContentId, IsMatch);
+
+            if (Terms != null) result += String.Format("; Terms-Liste ({0} Items)", Terms.Length);
+            if (Urls != null) result += String.Format("; Urls-Liste ({0} Items)", Terms.Length);
+
+            return result;
+        }
     }
 }

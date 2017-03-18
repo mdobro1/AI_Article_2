@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.CognitiveServices.ContentModerator;
+using Microsoft.CognitiveServices.ContentModerator.Contract.Image;
 
 
 namespace Gallery
@@ -27,13 +30,21 @@ namespace Gallery
                 SuccessMessagePlaceHolder.Visible = true;
                 Session.Remove("Uploadsuccses");
             }
- 
+
             PicList.DataSource = Gallery.GetImageNames();
             PicList.DataBind();
         }
 
         private void showImage(string image)
         {
+
+            // TODO call EvaluateImage here
+
+            //   string type = "raw";
+            //    string urlImage = "";
+            //   var expectSizeException = false;
+
+
             object imageTag = Session[image];
 
             if (imageTag == null)
@@ -58,6 +69,35 @@ namespace Gallery
             }
 
             bigImgDisplay.Visible = true;
+        }
+
+        private static async System.Threading.Tasks.Task<EvaluateImageResult> EvaluateImage(
+            string type, string urlImage, byte[] rawImage, bool expectSizeException)
+        {
+            var moderator =
+                new ModeratorClient("?");
+
+
+            EvaluateImageResult result = null;
+
+
+            switch (type)
+            {
+                case "url":
+                    {
+                        result = await moderator.EvaluateImageAsync(
+                                    urlImage, DataRepresentationType.Url, expectSizeException);
+                        break;
+                    }
+                case "raw":
+                    {
+                        result = await moderator.EvaluateImageAsync(
+                                    new System.IO.MemoryStream(rawImage), expectSizeException);
+                        break;
+                    }
+            }
+
+            return result;
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)

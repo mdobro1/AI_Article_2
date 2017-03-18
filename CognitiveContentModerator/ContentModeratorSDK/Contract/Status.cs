@@ -25,5 +25,10 @@ namespace Microsoft.CognitiveServices.ContentModerator.Contract
         /// Observed error
         /// </summary>
         public string Exception;
+
+        public override string ToString()
+        {
+            return String.Format("Code={0}; Description={1}; Exception={2}", Code, Description, Exception);
+        }
     }
 }

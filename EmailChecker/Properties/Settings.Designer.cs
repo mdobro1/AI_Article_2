@@ -49,7 +49,7 @@ namespace EmailChecker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6f81a959248444388738f0ef0e4b5b35")]
+        [global::System.Configuration.DefaultSettingValueAttribute("?")]
         public string ContentModerator_SubscriptionKey {
             get {
                 return ((string)(this["ContentModerator_SubscriptionKey"]));
@@ -94,6 +94,66 @@ namespace EmailChecker.Properties {
             }
             set {
                 this["CognitiveServicesUri_ContentModerator_Moderate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UserModeratorClient {
+            get {
+                return ((bool)(this["UserModeratorClient"]));
+            }
+            set {
+                this["UserModeratorClient"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("eng")]
+        public string DefaultLanguage {
+            get {
+                return ((string)(this["DefaultLanguage"]));
+            }
+            set {
+                this["DefaultLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ContentModerator_AnalyzeUrl {
+            get {
+                return ((bool)(this["ContentModerator_AnalyzeUrl"]));
+            }
+            set {
+                this["ContentModerator_AnalyzeUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ContentModerator_AutoCorrect {
+            get {
+                return ((bool)(this["ContentModerator_AutoCorrect"]));
+            }
+            set {
+                this["ContentModerator_AutoCorrect"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ContenetModerator_DetectPII {
+            get {
+                return ((bool)(this["ContenetModerator_DetectPII"]));
+            }
+            set {
+                this["ContenetModerator_DetectPII"] = value;
             }
         }
     }
