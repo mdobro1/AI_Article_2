@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Configuration;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.IO;
+using System.Threading.Tasks;
 using Microsoft.CognitiveServices.ContentModerator;
 using Microsoft.CognitiveServices.ContentModerator.Contract.Image;
 
@@ -37,59 +33,69 @@ namespace Gallery
 
         private async void showImage(string image)
         {
-
-            // TODO call EvaluateImage here
-
-            //   string type = "raw";
-            //    string urlImage = "";
-            //   var expectSizeException = false;
-
             bigImg.ImageUrl = "~/Gfx/stop.jpg";
             NotAllowedPlaceHolder.Visible = true;
 
             bool imageOK = false;
 
-            var evaluationResult = await
+            var msRawImage = new MemoryStream();
+            var imageFileContent = (Stream)Session["FileContent"];
 
-            if (!imageOK)
+            if (imageFileContent != null)
             {
+                await imageFileContent.CopyToAsync(msRawImage);
+                var evaluationResult = await EvaluateImage(msRawImage.ToArray());
 
+                imageOK = true;
+            }
+
+            if (imageOK && image != null)
+            {
+                bigImg.ImageUrl = "~/Pictures/" + image;
+                NotAllowedPlaceHolder.Visible = false;
+                NoPicturePlaceHolder.Visible = false;
             }
             else
             {
-                if (image != null)
-                    bigImg.ImageUrl = "~/Pictures/" + image;
-                else
-                {
-                    bigImg.ImageUrl = "~/Gfx/empty.jpg";
-                    NoPicturePlaceHolder.Visible = true;
-                }
-            }
+                bigImg.ImageUrl = "~/Gfx/empty.jpg";
+                NoPicturePlaceHolder.Visible = true;
+            }            
 
             bigImgDisplay.Visible = true;
         }
 
-        private static async System.Threading.Tasks.Task<EvaluateImageResult> EvaluateImage(
-            string type, string urlImage, byte[] rawImage, bool expectSizeException)
+        private static async Task<EvaluateImageResult> EvaluateImage(
+            string urlImage)
+        {
+            return await EvaluateImage("url", urlImage, null, true);
+        }
+
+        private static async Task<EvaluateImageResult> EvaluateImage(
+            byte[] rawImage)
+        {
+            return await EvaluateImage("raw", null, rawImage, true);
+        }
+
+        private static async Task<EvaluateImageResult> EvaluateImage(
+            string type, string urlImage, byte[] rawImage, bool cacheImage)
         {
             // init
             EvaluateImageResult result = null;
             var moderator = new ModeratorClient("?");
             
-
-
+            // go
             switch (type)
             {
                 case "url":
                     {
                         result = await moderator.EvaluateImageAsync(
-                                    urlImage, DataRepresentationType.Url, expectSizeException);
+                                    urlImage, DataRepresentationType.Url, cacheImage);
                         break;
                     }
                 case "raw":
                     {
                         result = await moderator.EvaluateImageAsync(
-                                    new System.IO.MemoryStream(rawImage), expectSizeException);
+                                    new System.IO.MemoryStream(rawImage), cacheImage);
                         break;
                     }
             }
@@ -103,6 +109,7 @@ namespace Gallery
             {
                 var upload = PictureFileUpload.FileName;
                 var stream = PictureFileUpload.FileContent;
+                Session["FileContent"] = stream;
 
                 Gallery modelGallery = new Gallery();
 
