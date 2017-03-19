@@ -16,10 +16,8 @@ The easiest way to use this client library is to get microsoft.projectoxford.vis
 
 1. Microsoft Computer Vision API: Windows Client Library & Sample (https://github.com/Microsoft/Cognitive-Vision-Windows/)
 2. Microsoft Content Moderator API: Windows Client Library (https://github.com/MicrosoftContentModerator/Microsoft.CognitiveServices.ContentModerator-Windows/)
-
-## The Sample Description
-1. This sample is a Windows WPF application to demonstrate the use of the Computer Vision API.
-2. ???
+3. Email-Checker : WinForm-App with Content-Moderation features
+4. PictureUpload - Gallery : ASP.NET Webapp with Content-Moderation features
 
 ### Run the Sample 1
 After the build of the Project "VisionAPI-WPF-Samples" from "AI_Article_2"-Solution, press F5 to run the sample.
@@ -39,16 +37,24 @@ from everyone in it.
 ## The Sample 2 - Content Moderator Client Library
 The client library is a thin C\# client wrapper for the Content Moderator API.
 
-### Build and Run the Sample 2 Library
- 1. Starting in the folder where you clone the repository (this folder)
- 
- 3. Start Microsoft Visual Studio 2015 and select `File > Open > Project/Solution`.
- 
- 4. Double-click the Visual Studio 2015 Solution (.sln) file.
+## The Sample 3 - Email-Checker
+This is the Winform Desktop-App that demonstrates evaluation of the Emails-Content of an Outlook-Account
+using Outlook COM-Intreface and the Content Moderator API.
 
- 5. Press Ctrl+Shift+B, or select `Build > Build Solution`.
+## The Sample 2 - Content Moderator Client Library
+This is the Winform Desktop-App that demonstrates automatic checking of an uploaded file for the sensible content using the Content Moderator API.
 
-#### You Run the Unit Tests to test the Client Library.
+
+### Build and Run the Samples N°N° 2 - 4 Library
+ 1. Starting in the folder where you clone the repository
+ 
+ 2. Start Microsoft Visual Studio 2015 and select `File > Open > Project/Solution`.
+ 
+ 3. Double-click the Visual Studio 2015 Solution (.sln) file.
+
+ 4. Press Ctrl+Shift+B, or select `Build > Build Solution`.
+ 
+ 5. If needed use NuGet Packet-Manager to solve projects dependecies (see more at https://www.nuget.org/)
 
 ## License
 All demo and sample projects are licensed with the MIT License. For more details, see
