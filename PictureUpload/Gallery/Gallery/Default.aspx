@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Gallery.Default" ViewStateMode="Disabled" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeBehind="Default.aspx.cs" Inherits="Gallery.Default" ViewStateMode="Disabled" %>
 
 <!DOCTYPE html>
 
@@ -63,11 +63,21 @@
                <div id="success_message"><p>Die Datei ist hochgeladen worden!</div>
         </asp:PlaceHolder>
 
-
-                <asp:PlaceHolder ID="NotAllowedPlaceHolder" runat="server" Visible="False">
-                <div id="NotAllowed_message"  style="font-family: Arial; font-size: medium; color: #FF0000"><p>Datei ist (noch) nicht freigegeben!</div>
+                <asp:PlaceHolder ID="PlaceHolderEvaluate" runat="server" Visible="False">
+                <div id="PlaceHolderEvaluate_message"  style="font-family: Arial; font-size: medium; color: #0000FF"><p>Datei-Inhalt wird geprüft. Haben Sie ein weing Geduld ...</div>
                 </asp:PlaceHolder>
 
+                <asp:PlaceHolder ID="NotAllowedPlaceHolder" runat="server" Visible="False">
+                <div id="NotAllowed_message"  style="font-family: Arial; font-size: medium; color: #FF0000"><p>Datei ist nicht freigegeben:</div>
+                </asp:PlaceHolder>
+
+                <asp:PlaceHolder ID="NotAllowedPlaceHolder_Racy" runat="server" Visible="False">
+                <div id="NotAllowedPlaceHolder_Racy_message" style="font-family: Arial; font-size: medium; color: #FF0000"><p>Rassen-Inhalt!</div>
+                </asp:PlaceHolder>
+
+                <asp:PlaceHolder ID="NotAllowedPlaceHolder_Adult" runat="server" Visible="False">
+                <div id="otAllowedPlaceHolder_Adult" style="font-family: Arial; font-size: medium; color: #FF0000"><p>Nicht Jugendfrei!</div>
+                </asp:PlaceHolder>
 
                 <asp:PlaceHolder ID="NoPicturePlaceHolder" runat="server" Visible="False">
                 <div id="NoPicture_message" style="font-family: Arial; font-size: medium; color: #FF0000"><p>Kein Bild gefunden bzw. ausgewählt!</div>

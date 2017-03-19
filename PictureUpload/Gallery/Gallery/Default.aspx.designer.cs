@@ -103,6 +103,15 @@ namespace Gallery {
         protected global::System.Web.UI.WebControls.PlaceHolder SuccessMessagePlaceHolder;
         
         /// <summary>
+        /// PlaceHolderEvaluate-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderEvaluate;
+        
+        /// <summary>
         /// NotAllowedPlaceHolder-Steuerelement
         /// </summary>
         /// <remarks>
@@ -110,6 +119,24 @@ namespace Gallery {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder NotAllowedPlaceHolder;
+        
+        /// <summary>
+        /// NotAllowedPlaceHolder_Racy-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder NotAllowedPlaceHolder_Racy;
+        
+        /// <summary>
+        /// NotAllowedPlaceHolder_Adult-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder NotAllowedPlaceHolder_Adult;
         
         /// <summary>
         /// NoPicturePlaceHolder-Steuerelement
