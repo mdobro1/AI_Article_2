@@ -45,7 +45,7 @@ using Outlook COM-Intreface and the Content Moderator API.
 This is the Winform Desktop-App that demonstrates automatic checking of an uploaded file for the sensible content using the Content Moderator API.
 
 
-### Build and Run the Samples N°N° 2 - 4 Library
+### Build and Run the Samples N°N° 2 - 4
  1. Starting in the folder where you clone the repository
  
  2. Start Microsoft Visual Studio 2015 and select `File > Open > Project/Solution`.
