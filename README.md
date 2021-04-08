@@ -1,5 +1,5 @@
 # AI_Article_2
-Code-Samples and Demos for Artifical Intelligence article (2. issue) in dotnetpro-magazine (http://www.dotnetpro.de/)
+Code-Samples and Demos for Artifical Intelligence article (2. issue) in [dotnetpro-magazine](http://www.dotnetpro.de/)
 
 # Demo and sample projects using Microsoft Computer Vision and Content Moderator API: Windows Client Library
 This repo contains the Windows client library & sample for the Microsoft Computer Vision API, an offering within [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), formerly known as Project Oxford.
